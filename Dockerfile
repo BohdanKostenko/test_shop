@@ -9,8 +9,6 @@ RUN apk update \
 RUN pip install --upgrade pip
 RUN pip install -r /requirements.txt
 
-COPY ./entrypoint.sh .
-
 RUN mkdir /app
 WORKDIR /app
 COPY ./app /app

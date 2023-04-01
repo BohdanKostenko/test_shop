@@ -11,22 +11,17 @@ services:
     env_file:
       - ./.env.dev
     depends_on:
-      - db
+      - postgres
 
-  db:
-    image: postgres:10.0-alpine
-    container_name: db
+  postgres:
+    image: postgres:12-alpine
+    container_name: postgres
     restart: always
-    hostname: db
-    networks:
-      default:
-        aliases:
-          - db
+    hostname: postgres
     environment:
       - POSTGRES_DB=db
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-    ports:
-      - '5432:5432'
+
 
 

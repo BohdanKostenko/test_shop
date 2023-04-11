@@ -1,2 +1,4 @@
 .env.dev
-.idea
+.idea/
+.env
+.venv

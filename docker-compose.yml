@@ -1,8 +1,9 @@
-version: '3.9'
+version: '3'
 
 services:
   app:
     build: .
+    container_name: shop
     command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./app:/app
@@ -16,12 +17,20 @@ services:
   postgres:
     image: postgres:12-alpine
     container_name: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
     restart: always
     hostname: postgres
     environment:
-      - POSTGRES_DB=db
+      - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+
+volumes:
+  app:
+  postgres_data:
+
+
 
 
 
